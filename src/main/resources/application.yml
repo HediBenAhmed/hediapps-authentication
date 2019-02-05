@@ -1,0 +1,29 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        use_sql_comments: true
+        format_sql: true
+        type: trace
+server:
+  port: 8081
+eureka:
+  instance:
+    hostname: 192.168.0.11
+    port: 8761
+    leaseRenewalIntervalInSeconds: 10
+    health-check-url-path: /actuator/health
+    preferIpAddress: true
+  client:
+    registryFetchIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
